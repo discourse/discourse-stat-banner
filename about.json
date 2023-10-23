@@ -1,7 +1,6 @@
 {
-  "about_url": null,
-  "license_url": null,
-  "assets": {},
+  "about_url": "https://github.com/discourse/discourse-stat-banner/blob/main/README.md",
+  "license_url": "https://github.com/discourse/discourse-stat-banner/blob/main/LICENSE",
   "name": "Stat banner",
   "component": true
 }
