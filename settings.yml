@@ -1,0 +1,31 @@
+display_stats:
+  default: ""
+  json_schema: '{"type":"array","format":"table","uniqueItems":true,"items":{"type":"object","properties":{"source":{"type":"string","description":"The source of the stat.","enum":["topics","posts","users","active_users","likes","chat_messages","chat_channels","chat_users"]},"period":{"type":"string","description":"The time period for the stat.","enum":["30_days","7_days","last_day"]},"title":{"type":"string","description":"The title of the stat."},"link":{"type":"string","description":"Optional link for the stat. Can be relative (/users) or absolute (https://discourse.org)"},"manual_value":{"type":"string","description":"Optional manual value for the stat."}},"additionalProperties":false}}'
+
+banner_title:
+  default: ""
+
+show_on:
+  default: "homepage"
+  type: enum
+  choices:
+    - homepage
+    - latest/top/new/categories
+    - everywhere
+
+background_color:
+  default: "var(--tertiary-low)"
+  description: "Discourse color variable or hex value"
+
+text_color:
+  default: "var(--primary)"
+  description: "Discourse color variable or hex value"
+
+min_column_width:
+  default: "10em"
+
+hide_on_mobile:
+  default: false
+
+plugin_outlet:
+  default: "above-main-container"
