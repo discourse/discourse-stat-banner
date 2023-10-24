@@ -38,6 +38,9 @@
         min-width: 0;
         color: $text-color;
       }
+      a span:last-of-type {
+        text-decoration: underline;
+      }
     }
 
     span {

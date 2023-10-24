@@ -44,7 +44,7 @@ export default class StatBanner extends Component {
   get shouldShow() {
     if (
       !settings.display_stats ||
-      (settings.hide_on_mobile && this.site.mobile_view)
+      (settings.hide_on_mobile && this.site.mobileView)
     ) {
       return false;
     }

@@ -9,7 +9,7 @@ function setupDisplayStats() {
   ]);
 }
 
-acceptance("Stat Banner", function (needs) {
+acceptance("Stat Banner", function () {
   test("Banner shows based on settings", async function (assert) {
     setupDisplayStats();
 
@@ -93,21 +93,30 @@ acceptance("Stat Banner", function (needs) {
       "creates localStorage cache",
     );
   });
+});
+
+acceptance("Stat Banner - Mobile", function (needs) {
+  needs.mobileView();
+  settings.show_on = "everywhere";
 
   test("Banner appears on mobile when allowed", async function (assert) {
     setupDisplayStats();
-    needs.mobileView();
 
-    settings.show_on = "homepage";
     settings.hide_on_mobile = true;
 
     await visit("/");
 
     assert
       .dom(".stat-banner__wrapper")
-      .exists("the banner does not display on mobile");
+      .doesNotExist("the banner does not display on mobile");
+  });
+
+  test("Banner appears on mobile when allowed", async function (assert) {
+    setupDisplayStats();
 
     settings.hide_on_mobile = false;
+
+    await visit("/");
 
     assert.dom(".stat-banner__wrapper").exists("the banner displays on mobile");
   });
