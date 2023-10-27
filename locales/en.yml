@@ -3,3 +3,4 @@ en:
     description: "Display a banner containing site statistics on your Discourse homepage"
     settings:
       plugin_outlet: "Plugin outlet that this component appears in. Try <code>above-main-container</code> or <code>below-site-header</code>,  you can find more outlets with the <a href='https://meta.discourse.org/t/plugin-outlet-locations-theme-component/100673'>plugin outlet location theme component</a>"
+      disable_cache: "The banner stats will refresh every time the banner is visible. Note that this may create a little additional server load."

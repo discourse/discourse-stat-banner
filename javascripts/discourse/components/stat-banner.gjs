@@ -169,7 +169,7 @@ export default class StatBanner extends Component {
     let cachedStats = this.loadFromCache("about_stats");
     let cachedSetting = this.loadFromCache("banner_stats_setting");
 
-    if (cachedStats && settings.display_stats === cachedSetting) {
+    if (!settings.disable_cache && cachedStats && settings.display_stats === cachedSetting ) {
       this.stats = cachedStats;
       return;
     }
@@ -177,8 +177,12 @@ export default class StatBanner extends Component {
     try {
       const result = await ajax("/about.json");
       this.stats = result.about.stats;
-
-      this.cacheStats();
+      if (settings.disable_cache) {
+        localStorage.removeItem("about_stats");
+        localStorage.removeItem("banner_stats_setting");
+      } else {
+        this.cacheStats();
+      }
     } catch (error) {
       this.stats = null;
       // eslint-disable-next-line no-console
