@@ -29,3 +29,6 @@ hide_on_mobile:
 
 plugin_outlet:
   default: "above-main-container"
+
+disable_cache:
+  default: false
