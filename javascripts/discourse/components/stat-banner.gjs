@@ -2,7 +2,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
 import { ajax } from "discourse/lib/ajax";
 import { defaultHomepage } from "discourse/lib/utilities";
@@ -26,7 +26,7 @@ export default class StatBanner extends Component {
           {{#each this.filteredStats as |s|}}
             <li>
               {{#if s.link}}
-                <a href="{{s.link}}"><span>{{s.value}}</span>
+                <a href={{s.link}}><span>{{s.value}}</span>
                   <span>{{s.title}}</span></a>
               {{else}}
                 <div>
@@ -144,7 +144,7 @@ export default class StatBanner extends Component {
     }
 
     const lowestPeriod = Math.min(
-      ...this.filteredStats.map((stat) => this.parseDaysFromStat(stat.period)),
+      ...this.filteredStats.map((stat) => this.parseDaysFromStat(stat.period))
     );
 
     const expiryInMilliseconds = lowestPeriod * 24 * 60 * 60 * 1000;
@@ -152,7 +152,7 @@ export default class StatBanner extends Component {
     this.saveToCache(
       "banner_stats_setting",
       settings.display_stats,
-      expiryInMilliseconds,
+      expiryInMilliseconds
     );
   }
 
@@ -169,7 +169,11 @@ export default class StatBanner extends Component {
     let cachedStats = this.loadFromCache("about_stats");
     let cachedSetting = this.loadFromCache("banner_stats_setting");
 
-    if (!settings.disable_cache && cachedStats && settings.display_stats === cachedSetting ) {
+    if (
+      !settings.disable_cache &&
+      cachedStats &&
+      settings.display_stats === cachedSetting
+    ) {
       this.stats = cachedStats;
       return;
     }

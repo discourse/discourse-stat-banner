@@ -78,7 +78,7 @@ acceptance("Stat Banner", function () {
 
     assert.ok(
       localStorage.getItem("about_stats"),
-      "creates localStorage cache",
+      "creates localStorage cache"
     );
   });
 
@@ -90,7 +90,7 @@ acceptance("Stat Banner", function () {
 
     assert.ok(
       localStorage.getItem("about_stats"),
-      "creates localStorage cache",
+      "creates localStorage cache"
     );
   });
 });
