@@ -1,6 +1,6 @@
 {
-  "about_url": "https://github.com/discourse/discourse-stat-banner/blob/main/README.md",
+  "about_url": "https://meta.discourse.org/t/stat-banner/283177",
   "license_url": "https://github.com/discourse/discourse-stat-banner/blob/main/LICENSE",
-  "name": "Stat banner",
+  "name": "Stat Banner",
   "component": true
 }
