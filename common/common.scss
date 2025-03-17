@@ -31,6 +31,7 @@
       gap: 0.5em;
       white-space: nowrap;
       overflow: hidden;
+
       > * {
         display: flex;
         align-items: center;
@@ -38,6 +39,7 @@
         min-width: 0;
         color: $text-color;
       }
+
       a span:last-of-type {
         text-decoration: underline;
       }
@@ -45,6 +47,7 @@
 
     span {
       flex: 0 1 auto;
+
       @include ellipsis;
     }
 
@@ -52,6 +55,7 @@
       font-size: var(--font-up-5);
       flex: 0 0 auto;
     }
+
     span:last-child {
       font-size: var(--font-up-1);
       flex: 0 1 auto;
