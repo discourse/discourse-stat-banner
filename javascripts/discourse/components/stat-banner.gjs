@@ -11,6 +11,7 @@ export default class StatBanner extends Component {
   @service site;
   @service siteSettings;
   @service router;
+
   @tracked stats;
 
   <template>
