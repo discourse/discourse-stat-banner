@@ -14,34 +14,6 @@ export default class StatBanner extends Component {
 
   @tracked stats;
 
-  <template>
-    {{! template-lint-disable modifier-name-case }}
-    {{#if this.shouldShow}}
-      <div class="stat-banner__wrapper" {{didInsert this.getAboutStats}}>
-        {{#if settings.banner_title}}
-          <div class="stat-banner__title">
-            {{htmlSafe settings.banner_title}}
-          </div>
-        {{/if}}
-        <ul>
-          {{#each this.filteredStats as |s|}}
-            <li>
-              {{#if s.link}}
-                <a href={{s.link}}><span>{{s.value}}</span>
-                  <span>{{s.title}}</span></a>
-              {{else}}
-                <div>
-                  <span>{{s.value}}</span>
-                  <span>{{s.title}}</span>
-                </div>
-              {{/if}}
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-    {{/if}}
-  </template>
-
   get shouldShow() {
     if (
       !settings.display_stats ||
@@ -195,4 +167,32 @@ export default class StatBanner extends Component {
       throw error;
     }
   }
+
+  <template>
+    {{! template-lint-disable modifier-name-case }}
+    {{#if this.shouldShow}}
+      <div class="stat-banner__wrapper" {{didInsert this.getAboutStats}}>
+        {{#if settings.banner_title}}
+          <div class="stat-banner__title">
+            {{htmlSafe settings.banner_title}}
+          </div>
+        {{/if}}
+        <ul>
+          {{#each this.filteredStats as |s|}}
+            <li>
+              {{#if s.link}}
+                <a href={{s.link}}><span>{{s.value}}</span>
+                  <span>{{s.title}}</span></a>
+              {{else}}
+                <div>
+                  <span>{{s.value}}</span>
+                  <span>{{s.title}}</span>
+                </div>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </template>
 }

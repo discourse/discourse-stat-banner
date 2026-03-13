@@ -2,11 +2,13 @@ import { visit } from "@ember/test-helpers";
 import { test } from "qunit";
 import { acceptance } from "discourse/tests/helpers/qunit-helpers";
 
+const STATS_FIXTURE = [
+  { source: "topics", period: "30_days", title: "Cool Topics" },
+  { source: "likes", period: "7_days", title: "Total Likes", link: "/likes" },
+];
+
 function setupDisplayStats() {
-  settings.display_stats = JSON.stringify([
-    { source: "topics", period: "30_days", title: "Cool Topics" },
-    { source: "likes", period: "7_days", title: "Total Likes", link: "/likes" },
-  ]);
+  settings.display_stats = JSON.stringify(STATS_FIXTURE);
 }
 
 acceptance("Stat Banner", function () {
@@ -76,8 +78,8 @@ acceptance("Stat Banner", function () {
 
     await visit("/");
 
-    assert.ok(
-      localStorage.getItem("about_stats"),
+    assert.true(
+      !!localStorage.getItem("about_stats"),
       "creates localStorage cache"
     );
   });
@@ -88,8 +90,8 @@ acceptance("Stat Banner", function () {
 
     await visit("/");
 
-    assert.ok(
-      localStorage.getItem("about_stats"),
+    assert.true(
+      !!localStorage.getItem("about_stats"),
       "creates localStorage cache"
     );
   });
